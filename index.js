@@ -1,8 +1,9 @@
 var sqlite3 = require('sqlite3').verbose();
 var express = require('express');
 
-const app = express()
-const port = 3000;
+const app = express();
+const port = process.env.PORT || 3000;
+
 
 var db = new sqlite3.Database('./database/countries.db');
 
@@ -44,5 +45,5 @@ app.get('/countries', function(req,res){
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Country Service listening on port ${port}`)
 })
