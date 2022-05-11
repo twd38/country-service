@@ -29,8 +29,8 @@ app.get('/countries/:id', function(req,res){
 
 //get all countries
 app.get('/countries', function(req,res){
-  const page = req.query.page - 1
-  const limit = req.query.limit
+  const page = req.query.page - 1 || 0
+  const limit = req.query.limit || 10000
 
   db.serialize(()=>{
     db.all(`SELECT * FROM emp LIMIT ${limit} OFFSET ${page*limit}`, [req.params.id], function(err,rows){   
